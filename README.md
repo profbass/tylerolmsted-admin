@@ -1,4 +1,4 @@
-# tylerolmsted-admin
+# tylerolmsted.co admin
 
 ## Installation
 

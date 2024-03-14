@@ -8,17 +8,8 @@ import {
     TextField, 
     ImageField,
     EditButton,
-    // ArrayInput,
-    // DateInput,
-    // Edit,
-    // NumberInput,
-    // ImageInput,
-    // ReferenceInput,
-    // TextInput,
-    // SimpleForm,
-    // SimpleFormIterator,
+    Create
 } from 'react-admin';
-// import { RichTextInput } from 'ra-input-rich-text';
 import { PersonEditView } from './Person';
 
 
@@ -53,44 +44,9 @@ export const PeopleList = () => (
 
 export const PersonEdit = PersonEditView;
 
-// export const PersonEdit = () => (
-//     <Edit>
-//         <SimpleForm>
-//             <TextInput source="id" InputProps={{ disabled: true }} />
-//             <TextInput source="first_name" fullWidth />
-//             <TextInput source="last_name" fullWidth />
-//             <NumberInput source="age" fullWidth />
-//             <TextInput source="email" fullWidth />
-//             <ImageField source="photo_url" />
-//             <ImageInput source="photo_url" />
-//             <RichTextInput source="bio" />
-//             <DateInput source="created_at" disabled />
-//             <DateInput source="updated_at" defaultValue={new Date()} disabled />
-//             <ArrayInput source="jobs" title="My Jobs">
-//                 <SimpleFormIterator>
-//                     <TextInput source="id" disabled />
-//                     <TextInput source="company" />
-//                     <TextInput source="title" />
-//                     <TextInput source="salary" />
-//                     <TextInput source="desctiption" />
-//                     <DateInput source="start_date" />
-//                     <DateInput source="end_date" />
-//                     <TextInput source="logo" />
-//                     <ReferenceInput source="people_id" reference="people" />
-//                     <DateInput source="created_at" disabled />
-//                     <DateInput source="updated_at" defaultValue={new Date()} disabled />
-//                 </SimpleFormIterator>
-//             </ArrayInput>
-//             <ArrayInput source="social_links">
-//                 <SimpleFormIterator>
-//                     <TextInput source="id" disabled />
-//                     <TextInput source="platform" />
-//                     <TextInput source="url" />
-//                     <ReferenceInput source="people_id" reference="people" />
-//                     <DateInput source="created_at" disabled />
-//                     <DateInput source="updated_at" defaultValue={new Date()} disabled />
-//                 </SimpleFormIterator>
-//             </ArrayInput>
-//         </SimpleForm>
-//     </Edit>
-// );
+
+export const PersonCreate = () => (
+    <Create>
+        <PersonEditView />
+    </Create>
+);

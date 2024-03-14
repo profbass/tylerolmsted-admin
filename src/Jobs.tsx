@@ -1,66 +1,38 @@
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { 
-    useGetOne,
-    useRedirect,
-    RecordContextProvider,
-    Title,
+    TextField,
+    List,
+    Datagrid,
+    Create,
     ImageField,
-    Loading, 
-    SaveButton,
-    DeleteButton,
-    Edit,
+    NumberField,
+    ReferenceField
 } from 'react-admin';
-import { Typography, Box, Grid } from '@mui/material';
-import { SimpleForm, TextInput, NumberInput } from 'react-admin';
+// import { Typography, Box, Grid } from '@mui/material';
+import { JobEditView } from './Job';
 
-export const JobsEditView = () => {
-
-    const { id } = useParams();
-    const redirect = useRedirect();
-
-    const { data, isLoading } = useGetOne(
-        'jobs',
-        { id },
-        { onError: () => redirect('/jobs') }
-    );
-
-    if (isLoading) { return <Loading />; }
-
+export const JobsList = () => {
     return (
-        <RecordContextProvider value={data}>
-            <Title title={`${data.title} - Edit Job`} />
-            <Box sx={{ flexGrow: 1 }}>
-                <Edit>
-                    <SimpleForm toolbar={false}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <Typography variant="h6" component="h6">Job: {data.id}</Typography>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <TextInput source="company" defaultValue={data.company} fullWidth />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <TextInput source="title" defaultValue={data.title} fullWidth />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <NumberInput source="salary" defaultValue={data.salary} fullWidth />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <TextInput source="description" defaultValue={data.description} fullWidth />
-                            </Grid>
-                            <Grid item xs={6}>
-                                <ImageField source="logo" />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <SaveButton/>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <DeleteButton/>
-                            </Grid>    
-                        </Grid>
-                    </SimpleForm>
-                </Edit>
-            </Box>
-        </RecordContextProvider>
+        <List>
+            <Datagrid rowClick="edit">
+                <TextField source="company" />
+                <TextField source="title" />
+                <ReferenceField source="people_id" reference="people">
+                    <TextField source="first_name" />
+                    <TextField source="last_name" />
+                </ReferenceField>
+                <NumberField source="salary" />
+                <TextField source="description" />
+                <ImageField source="logo" />
+            </Datagrid>
+        </List>
     );
-};
+}
+
+export const JobsEdit = JobEditView;
+
+export const JobCreate = () => (
+    <Create>
+        <JobEditView />
+    </Create>
+);

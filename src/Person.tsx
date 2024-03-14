@@ -17,7 +17,6 @@ import {
 import { Typography, Box, Grid } from '@mui/material';
 import { SimpleForm, TextInput, NumberInput } from 'react-admin';
 import { RichTextInput } from 'ra-input-rich-text';
-// import { JobsEditView } from './Jobs';
 
 export const PersonEditView = () => {
 
