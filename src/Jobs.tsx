@@ -31,6 +31,7 @@ export const JobsList = () => {
 
 export const JobsEdit = JobEditView;
 
+// TODO: Create a JobCreate component
 export const JobCreate = () => (
     <Create>
         <JobEditView />

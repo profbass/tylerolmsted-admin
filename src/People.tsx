@@ -44,7 +44,7 @@ export const PeopleList = () => (
 
 export const PersonEdit = PersonEditView;
 
-
+// TODO: Create a PersonCreate component
 export const PersonCreate = () => (
     <Create>
         <PersonEditView />
